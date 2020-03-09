@@ -1,0 +1,25 @@
+.vehicle-summary {
+  user-select: none;
+  transition: filter 0.3s, opacity 0.3s, box-shadow 0.3s, transform 0.3s;
+  margin: 10px 10px 10px 10px;
+  box-shadow: var(--item-shadow);
+  border-radius: var(--border-radius);
+  min-width: 250px;
+  display: block;
+  background-color: var(--card-bg-color);
+  flex: 1;
+  overflow: hidden;
+
+  .vehicle-img {
+      img {
+          background-color: lightgray;
+          height: 150px;
+          width: 100%;
+          object-fit: cover;
+      }
+  }
+
+  .vehicle-info {
+      padding: 10px;
+  }
+}

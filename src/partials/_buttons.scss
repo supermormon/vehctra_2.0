@@ -1,0 +1,57 @@
+.btn {
+  user-select: none;
+  color: white;
+  background-color: var(--gray);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: var(--font-size);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 8px;
+  margin: 5px 10px 5px 10px;
+  outline: none;
+  // box-shadow: var(--item-shadow);
+  height: 42px;
+  transition: filter 0.2s, box-shadow 0.1s;
+  box-shadow: var(--item-shadow);
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.btn:active {
+  box-shadow: none;
+  filter: brightness(0.85);
+}
+
+.btn-primary {
+  color: white;
+  background-color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+  box-shadow: none;
+}
+
+.btn-warn {
+  color: white;
+  background-color: var(--red);
+  border: solid 1px var(--red);
+}
+
+.btn-warn-invert {
+  color: var(--red);
+  background-color: white;
+  border: solid 1px var(--red);
+  box-shadow: none;
+}
+
+.btn-icon {
+  width: 42px;
+  transform: translateY(6px);
+  border-radius: 22px;
+}

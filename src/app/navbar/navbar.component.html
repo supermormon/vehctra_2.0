@@ -1,0 +1,52 @@
+<header>
+  <nav>
+      <div class="nav-item" id="dashboard_btn">
+          <div class="nav-item-wrapper">
+              <i class="material-icons">dashboard</i>
+              <div class="item-label">Dashboard</div>
+          </div>
+      </div>
+      <div class="nav-item" id="settings_btn">
+          <div class="nav-item-wrapper">
+              <i class="material-icons">settings</i>
+              <div class="item-label">Settings</div>
+          </div>
+      </div>
+      <div 
+        id="floating-log-btns" 
+        *ngIf="showAddMenu"
+        [ngClass]="{'fade-in':showAddMenu}"
+        class="fade-in">
+          <button 
+            id="add-service-log-btn" 
+            class="btn btn-primary btn-icon">
+            <i class="material-icons">build</i>
+          </button>
+          <button 
+            id="add-fuel-log-btn" 
+            class="btn btn-primary btn-icon">
+            <i class="material-icons">local_gas_station</i>
+          </button>
+          <button 
+            id="add-vehicle-btn" 
+            class="btn btn-primary btn-icon">
+            <i class="material-icons">directions_car</i>
+          </button>
+      </div>
+      <div 
+        id="add-log-btn" 
+        class="floating-action-btn" 
+        (click)="onToggleAddMenu()"
+        [ngClass]="{'active':showAddMenu}">
+        <i 
+          class="material-icons" 
+          [ngClass]="{'rotate':showAddMenu}">
+          add</i>
+      </div>
+      <div 
+        id="menu-dark-overlay" 
+        *ngIf="showAddMenu" 
+        (click)="onToggleAddMenu()">
+      </div>
+  </nav>
+</header>
