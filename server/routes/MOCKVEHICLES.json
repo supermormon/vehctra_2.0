@@ -1,0 +1,25 @@
+[{
+    "id": "1",
+    "make": "Ford",
+    "model": "Explorer",
+    "year": "2020",
+    "vin": "1234567890123456",
+    "licensePlate": "WASSUP",
+    "image": "",
+    "customInfos": [],
+    "serviceEntries": [],
+    "fuelEntries": []
+  },
+  {
+    "id": "2",
+    "make": "Hyundai",
+    "model": "Tucson",
+    "year": "2020",
+    "vin": "98765432109876543",
+    "licensePlate": "WHODAT",
+    "image": "",
+    "customInfos": [],
+    "serviceEntries": [],
+    "fuelEntries": []
+  }
+]

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const vehicleRoutes = require('./backend/endpoints/vehicles.endpoints');
-const serviceRoutes = require('./backend/endpoints/services.endpoints');
+const vehicleRoutes = require('./vehicles.routes');
+// const serviceRoutes = require('./backend/endpoints/services.endpoints');
 
 const app = express();
 
@@ -20,6 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 app.use(vehicleRoutes);
-app.use(serviceRoutes);
+// app.use(serviceRoutes);
 
 module.exports = app;
