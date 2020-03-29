@@ -1,0 +1,28 @@
+<div class="optionbar" id="optionbar" [ngClass]="{'open-kebab-menu': showKebabMenu}">
+  <div class="kebab-menu">
+      <div class="btn-container">
+        <button id="edit-btn" class="btn btn btn-normal">Edit</button>
+        <button id="delete-btn" class="btn btn btn-warn">Delete</button>
+      </div>
+  </div>
+  <div>
+      <div 
+        (click)="onBack()"
+        class="back-btn"
+        id="back-btn">
+        <i class="material-icons">arrow_back_ios</i>
+      </div>
+      <div class="title-txt" id="optionbar-title"></div>
+      <div 
+        class="kebab-menu-btn" 
+        id="kebab-menu-btn" 
+        (click)="onToggleKebabMenu()">
+        <i class="material-icons">more_vert</i>
+      </div>
+  </div>
+</div>
+<div 
+  (click)="onToggleKebabMenu()"
+  id="kebab-menu-overlay"
+  *ngIf="showKebabMenu">
+</div>

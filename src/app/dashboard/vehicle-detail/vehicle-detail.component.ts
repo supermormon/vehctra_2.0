@@ -18,6 +18,10 @@ export class VehicleDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.vehicleService.vehicleChangedEvent.subscribe((vehicles) => {
+    //   this.vehicle = this.vehicleService.getVehicle(this.route.params['id']);
+    // });
+    this.vehicle = this.vehicleService.getVehicle(this.route.params['id']);
     this.route.params.subscribe((params: Params) => {
       this.vehicle = this.vehicleService.getVehicle(params['id']);
     });

@@ -1,1 +1,56 @@
-<h1>vehicle detail works!</h1>
+<app-option-bar></app-option-bar>
+<div class="vehicle-full" [id]="vehicle.id">
+  <div class="card-show">
+    <div class="vehicle-img"><img src="{{vehicle.image}}" alt=""></div>
+    <div class="card">
+      <div id="vehicle-info">
+        <h4>Vehicle Info</h4>
+        <ul class="list-unstyled">
+          <li class="list-item">Make: {{vehicle.make}}</li>
+          <li class="list-item">Model: {{vehicle.model}}</li>
+          <li class="list-item">Year: {{vehicle.year}}</li>
+          <li class="list-item">Vin: {{vehicle.vin}}</li>
+          <li class="list-item">License Plate: {{vehicle.licensePlate}}</li>
+        </ul>
+        <h4 *ngIf="vehicle.customInfos.length > 0">Custom Info</h4>
+        <ul 
+        *ngIf="vehicle.customInfos.length > 0"
+        class="list-unstyled">
+          <li *ngFor="let ci of vehicle.customInfos" class="list-item">{{ci.title}}: {{ci.info}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div id="recent-services">
+        <h4>Recent Services</h4>
+        <ul class="list-unstyled">
+          <li 
+          *ngIf="vehicle.serviceEntries.length <= 0; else showServices" 
+          class="list-item">It looks like you don't have any recent services for this vehicle</li>
+          <ng-template #showServices>
+            <li *ngFor="let entry of vehicle.serviceEntries" class="list-item">
+              <div>{{entry.date}} | odo: {{entry.odometer}}</div>
+              <div>{{ entry.services.join(", ") }}</div>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div id="recent-fuelups">
+        <h4>Recent Fuel-ups</h4>
+        <ul class="list-unstyled">
+          <li 
+          *ngIf="vehicle.fuelEntries.length <= 0; else showFuelups"
+          class="list-item">It looks like you don't have any recent fuel-ups for this vehicle</li>
+          <ng-template #showFuelups>
+            <li *ngFor="let entry of vehicle.fuelEntries" class="list-item">
+              <div>{{ entry.date }} | odo: {{ entry.odometer }}</div>
+              <div>{{ entry.gallons }} gallons</div>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
