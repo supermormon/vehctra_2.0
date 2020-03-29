@@ -1,6 +1,11 @@
 <div class="card-show">
-  <div class="vehicle-summary">
-    <app-vehicle-item></app-vehicle-item>
-  </div>
+  <!-- <div class="vehicle-summary"> -->
+    <app-vehicle-item
+    class="vehicle-summary"
+    *ngFor="let vehicleEl of vehicles"
+    [vehicle]="vehicleEl"
+    [routerLink]="['vehicle', vehicleEl.id]"
+    ></app-vehicle-item>
+  <!-- </div> -->
   <div class="dummy-card"></div>
 </div>

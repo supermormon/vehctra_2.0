@@ -1,12 +1,20 @@
 <header>
   <nav>
-      <div class="nav-item" id="dashboard_btn">
+      <div 
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      class="nav-item" 
+      id="dashboard_btn">
           <div class="nav-item-wrapper">
               <i class="material-icons">dashboard</i>
               <div class="item-label">Dashboard</div>
           </div>
       </div>
-      <div class="nav-item" id="settings_btn">
+      <div 
+      routerLink="#"
+      routerLinkActive="active"
+      class="nav-item" 
+      id="settings_btn">
           <div class="nav-item-wrapper">
               <i class="material-icons">settings</i>
               <div class="item-label">Settings</div>
@@ -18,16 +26,20 @@
         [ngClass]="{'fade-in':showAddMenu}"
         class="fade-in">
           <button 
+            (click)="onToggleAddMenu()"
             id="add-service-log-btn" 
             class="btn btn-primary btn-icon">
             <i class="material-icons">build</i>
           </button>
           <button 
+            (click)="onToggleAddMenu()"
             id="add-fuel-log-btn" 
             class="btn btn-primary btn-icon">
             <i class="material-icons">local_gas_station</i>
           </button>
           <button 
+            routerLink="/dashboard/addVehicle"
+            (click)="onToggleAddMenu()"
             id="add-vehicle-btn" 
             class="btn btn-primary btn-icon">
             <i class="material-icons">directions_car</i>

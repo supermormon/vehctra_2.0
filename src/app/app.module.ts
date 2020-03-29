@@ -9,6 +9,9 @@ import { VehicleListComponent } from './dashboard/vehicle-list/vehicle-list.comp
 import { DashboardNotificationsComponent } from './dashboard/dashboard-notifications/dashboard-notifications.component';
 import { VehicleDetailComponent } from './dashboard/vehicle-detail/vehicle-detail.component';
 import { VehicleItemComponent } from './dashboard/vehicle-item/vehicle-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { VehicleEditComponent } from './dashboard/vehicle-edit/vehicle-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,15 @@ import { VehicleItemComponent } from './dashboard/vehicle-item/vehicle-item.comp
     VehicleListComponent,
     DashboardNotificationsComponent,
     VehicleDetailComponent,
-    VehicleItemComponent
+    VehicleItemComponent,
+    VehicleEditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

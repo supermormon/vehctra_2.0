@@ -1,0 +1,69 @@
+<div class="popup-container">
+  <div class="popup">
+      <div class="popup-title">
+          <div class="back-btn" id="popup-back-btn"><i class="material-icons">clear</i></div>
+          <div class="title-txt">Add Vehicle</div>
+          <div class="save-btn" id="popup-save-btn"><i class="material-icons">save</i></div>
+      </div>
+      <div class="popup-warn"></div>
+      <div class="popup-body">
+        <form>
+          <div class="form-txt">General Info</div>
+          <div class="break"></div>
+
+          <div class="input-btn-container">
+              <input 
+                type="text" 
+                id="vin" 
+                placeholder="vin" 
+                class=""
+                required>
+              <button type="button" class="btn btn-primary btn-icon input-btn"><i class="material-icons">photo_camera</i></button>
+          </div>
+          <div id="vin-warn" class="input-warn-text"></div>
+          <div class="break"></div>
+
+          <input 
+            type="text" 
+            id="make" 
+            placeholder="make"
+            name="make"
+            [ngModel]="vehicle?.make"
+            required>
+          <div class="break"></div>
+
+          <input 
+            type="text" 
+            id="model" 
+            placeholder="model"
+            required>
+          <div class="break"></div>
+
+          <select 
+            name="year" 
+            id="year"
+            required>
+              <option value="" disabled selected>model year</option>
+              <option 
+                *ngFor="let year of getYears()"
+                value="year"
+                [selected]="year === vehicle?.year">
+                {{ year }}
+              </option>
+          </select>
+          <div class="break"></div>
+
+          <input type="text" id="img-url" placeholder="image url">
+          <div class="break"></div>
+          <input type="text" id="license-plate" placeholder="license plate">
+          <div class="break"></div>
+          <div class="form-txt">Custom Info</div>
+          <div class="break"></div>
+          <div class="custom-info-fields"></div>
+          <div class="break"></div>
+          <button type="button" class="btn btn-secondary btn-icon input-btn" id="add-custom-info-btn"><i class="material-icons">add</i></button>
+          <div class="break"></div>
+        </form>
+      </div>
+  </div>
+</div>

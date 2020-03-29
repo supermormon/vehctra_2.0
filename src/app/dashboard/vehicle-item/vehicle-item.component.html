@@ -1,12 +1,6 @@
-<div class="vehicle-summary" id="P13dedvKPp39KzcSmDBO">
+<!-- <div class="vehicle-summary" [id]="vehicle.id"> -->
   <div class="vehicle-img">
-    <img src="https://cdn.motor1.com/images/mgl/qvzOz/s1/2019-hyundai-tucson.jpg" alt="">
+    <img [src]="vehicle.image" alt="">
   </div>
-  <div class="vehicle-info">Hyundai Tucson 2019</div>
-</div>
-<div class="vehicle-summary" id="P13dedvKPp39KzcSmDBO">
-  <div class="vehicle-img">
-    <img src="https://cdn.motor1.com/images/mgl/ZJrny/s1/ford-explorer-lead.jpg" alt="">
-  </div>
-  <div class="vehicle-info">Ford Explorer 2019</div>
-</div>
+  <div class="vehicle-info">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
+<!-- </div> -->
