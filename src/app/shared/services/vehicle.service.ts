@@ -22,9 +22,13 @@ export class VehicleService {
 
   getVehicle(id: string) {
     if (id) {
-      return this.vehicles.find(vehicle => {
-        return vehicle.id === id;
-      });
+      if (this.vehicles.length >= 0) {
+        return this.vehicles.find(vehicle => {
+          return vehicle.id === id;
+        });
+      } else {
+        this.getVehicles();
+      }
     }
   }
 
@@ -38,5 +42,17 @@ export class VehicleService {
     }, error => {
       console.log(error);
     });
+  }
+
+  updateVehicle(oldVehicle: Vehicle, newVehicle: Vehicle) {
+
+  }
+
+  addVehicle(newVehicle: Vehicle) {
+
+  }
+
+  deleteVehicle(vehicleId: string) {
+
   }
 }
