@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./option-bar.component.scss']
 })
 export class OptionBarComponent implements OnInit {
+  @Input('title') title: string;
   showKebabMenu = false;
 
   constructor(
@@ -22,6 +23,14 @@ export class OptionBarComponent implements OnInit {
 
   onBack() {
     this.router.navigate(['/dashboard']);
+  }
+
+  onEdit() {
+    this.router.navigate(['edit'], { relativeTo: this.route });
+  }
+
+  onDelete() {
+
   }
 
 }

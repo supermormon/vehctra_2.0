@@ -22,13 +22,14 @@ export class VehicleService {
 
   getVehicle(id: string) {
     if (id) {
-      if (this.vehicles.length >= 0) {
-        return this.vehicles.find(vehicle => {
-          return vehicle.id === id;
-        });
-      } else {
-        this.getVehicles();
-      }
+      // if (this.vehicles.length >= 0) {
+      //   return this.vehicles.find(vehicle => {
+      //     return vehicle.id === id;
+      //   });
+      // } else {
+      //   this.getVehicles();
+      // }
+      return this.http.get<Vehicle>(this.baseUri + `${this.endpoint}/${id}`)
     }
   }
 

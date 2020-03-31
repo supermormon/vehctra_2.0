@@ -12,6 +12,8 @@ import { VehicleItemComponent } from './dashboard/vehicle-item/vehicle-item.comp
 import { HttpClientModule } from '@angular/common/http';
 import { VehicleEditComponent } from './dashboard/vehicle-edit/vehicle-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OptionBarComponent } from './dashboard/option-bar/option-bar.component';
+import { LoadingCircleComponent } from './shared/components/loading-circle/loading-circle.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardNotificationsComponent,
     VehicleDetailComponent,
     VehicleItemComponent,
-    VehicleEditComponent
+    VehicleEditComponent,
+    OptionBarComponent,
+    LoadingCircleComponent
   ],
   imports: [
     BrowserModule,

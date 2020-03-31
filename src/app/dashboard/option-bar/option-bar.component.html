@@ -1,8 +1,18 @@
 <div class="optionbar" id="optionbar" [ngClass]="{'open-kebab-menu': showKebabMenu}">
   <div class="kebab-menu">
       <div class="btn-container">
-        <button id="edit-btn" class="btn btn btn-normal">Edit</button>
-        <button id="delete-btn" class="btn btn btn-warn">Delete</button>
+        <button 
+          (click)="onDelete()"
+          id="delete-btn" 
+          class="btn btn btn-warn">
+          Delete
+        </button>
+        <button 
+          (click)="onEdit()"
+          id="edit-btn" 
+          class="btn btn btn-normal">
+          Edit
+        </button>
       </div>
   </div>
   <div>
@@ -12,7 +22,7 @@
         id="back-btn">
         <i class="material-icons">arrow_back_ios</i>
       </div>
-      <div class="title-txt" id="optionbar-title"></div>
+      <div class="title-txt" id="optionbar-title">{{ title }}</div>
       <div 
         class="kebab-menu-btn" 
         id="kebab-menu-btn" 
@@ -23,6 +33,6 @@
 </div>
 <div 
   (click)="onToggleKebabMenu()"
-  id="kebab-menu-overlay"
+  class="kebab-menu-overlay"
   *ngIf="showKebabMenu">
 </div>

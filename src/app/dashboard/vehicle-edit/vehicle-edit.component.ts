@@ -12,8 +12,9 @@ import { VehicleService } from 'src/app/shared/services/vehicle.service';
 export class VehicleEditComponent implements OnInit {
   @ViewChild('form', { static: false }) docFrom: NgForm;
   originalVehicle: Vehicle;
-  vehicle: Vehicle;
+  vehicle: Vehicle = null;
   editMode: boolean = false;
+  invalidSaveAttempt = false;
 
   constructor(
     private router: Router,
@@ -28,16 +29,16 @@ export class VehicleEditComponent implements OnInit {
         this.editMode = false;
         return;
       }
-      this.originalVehicle = this.vehicleService.getVehicle(id);
-      if (!this.originalVehicle) {
-        return;
-      }
-      this.editMode = true;
-      this.vehicle = JSON.parse(JSON.stringify(this.originalVehicle));
+      this.vehicleService.getVehicle(id).subscribe((vehicle: Vehicle) => {
+        this.originalVehicle = vehicle;
+        if (!this.originalVehicle) {
+          return;
+        }
+        this.editMode = true;
+        this.vehicle = JSON.parse(JSON.stringify(this.originalVehicle));
+      })
     });
   }
-
-
 
   getYears() {
     var years = [];
@@ -45,6 +46,28 @@ export class VehicleEditComponent implements OnInit {
       years.push(year);
     }
     return years;
+  }
+
+  onCancel() {
+    if (this.editMode) {
+      this.router.navigate(['/dashboard', 'vehicle', this.vehicle.id])
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
+  }
+
+  onSave() {
+    if (this.docFrom.invalid) {
+      this.invalidSaveAttempt = true;
+      return;
+    }
+    // create a new vehicle
+
+    if (this.editMode) {
+      // this.vehicleService.updateVehicle(this.originalVehicle, newVehicle)
+    } else {
+      // this.vehicleService.createVehicle
+    }
   }
 
 }

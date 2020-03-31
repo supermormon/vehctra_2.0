@@ -31,10 +31,10 @@ function getVehicle(req, res) {
   Vehicle
   .find({id: req.params.id})
   .then(vehicle => {
-    if (!vehicle) {
+    if (!vehicle[0]) {
       res.status(400).json({error: "No document with id of " + req.params.id});
     }
-    res.status(200).json(vehicle);
+    res.status(200).json(vehicle[0]);
   })
   .catch(err => {
     returnError(res, err);

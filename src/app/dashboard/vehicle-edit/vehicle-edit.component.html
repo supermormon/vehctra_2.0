@@ -1,13 +1,24 @@
 <div class="popup-container">
   <div class="popup">
       <div class="popup-title">
-          <div class="back-btn" id="popup-back-btn"><i class="material-icons">clear</i></div>
-          <div class="title-txt">Add Vehicle</div>
-          <div class="save-btn" id="popup-save-btn"><i class="material-icons">save</i></div>
+          <div 
+            (click)="onCancel()"
+            class="back-btn" 
+            id="popup-back-btn">
+            <i class="material-icons">clear</i>
+          </div>
+          <div *ngIf="!editMode" class="title-txt">Add Vehicle</div>
+          <div *ngIf="editMode" class="title-txt">Edit Vehicle</div>
+          <div
+            (click)="onSave()"
+            class="save-btn" 
+            id="popup-save-btn">
+            <i class="material-icons">save</i>
+          </div>
       </div>
-      <div class="popup-warn"></div>
+      <div *ngIf="invalidSaveAttempt" class="popup-warn">Enter a value for all required fields</div>
       <div class="popup-body">
-        <form>
+        <form id="vehicle-edit" #form="ngForm">
           <div class="form-txt">General Info</div>
           <div class="break"></div>
 
@@ -15,12 +26,15 @@
               <input 
                 type="text" 
                 id="vin" 
+                name="vin"
                 placeholder="vin" 
-                class=""
+                [ngModel]="vehicle?.vin"
+                #vin="ngModel"
+                class="required"
                 required>
               <button type="button" class="btn btn-primary btn-icon input-btn"><i class="material-icons">photo_camera</i></button>
           </div>
-          <div id="vin-warn" class="input-warn-text"></div>
+          <div *ngIf="vin.invalid && vin.touched" id="vin-warn" class="input-warn-text">Vin must be 17 characters long</div>
           <div class="break"></div>
 
           <input 
@@ -29,6 +43,7 @@
             placeholder="make"
             name="make"
             [ngModel]="vehicle?.make"
+            class="required"
             required>
           <div class="break"></div>
 
@@ -36,33 +51,54 @@
             type="text" 
             id="model" 
             placeholder="model"
+            name="model"
+            [ngModel]="vehicle?.model"
+            class="required"
             required>
           <div class="break"></div>
 
-          <select 
-            name="year" 
+          <select
+            name="year"
             id="year"
             required>
-              <option value="" disabled selected>model year</option>
+              <option value="" disabled selected>select model year</option>
               <option 
                 *ngFor="let year of getYears()"
                 value="year"
-                [selected]="year === vehicle?.year">
+                [selected]="year == vehicle?.year">
                 {{ year }}
               </option>
           </select>
           <div class="break"></div>
 
-          <input type="text" id="img-url" placeholder="image url">
+          <input
+            type="text" 
+            id="img-url" 
+            placeholder="image url"
+            name="image"
+            [ngModel]="vehicle?.image"> 
           <div class="break"></div>
-          <input type="text" id="license-plate" placeholder="license plate">
+
+          <input 
+            type="text" 
+            id="license-plate" 
+            placeholder="license plate"
+            name="licensePlate"
+            [ngModel]="vehicle?.licensePlate">
           <div class="break"></div>
+
           <div class="form-txt">Custom Info</div>
           <div class="break"></div>
           <div class="custom-info-fields"></div>
           <div class="break"></div>
-          <button type="button" class="btn btn-secondary btn-icon input-btn" id="add-custom-info-btn"><i class="material-icons">add</i></button>
+          <button 
+            type="button" 
+            class="btn btn-secondary btn-icon input-btn" 
+            id="add-custom-info-btn">
+            <i class="material-icons">add</i>
+          </button>
           <div class="break"></div>
+
         </form>
       </div>
   </div>
