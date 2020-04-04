@@ -1,4 +1,6 @@
-<div class="popup-container">
+<div
+  *ngIf="!editMode || (vehicleObservable | async)"
+  class="popup-container">
   <div class="popup">
       <div class="popup-title">
           <div 
@@ -18,7 +20,7 @@
       </div>
       <div *ngIf="invalidSaveAttempt" class="popup-warn">Enter a value for all required fields</div>
       <div class="popup-body">
-        <form id="vehicle-edit" #form="ngForm">
+        <form id="vehicle-edit" [formGroup]="vehicleForm">
           <div class="form-txt">General Info</div>
           <div class="break"></div>
 
@@ -26,10 +28,9 @@
               <input 
                 type="text" 
                 id="vin" 
-                name="vin"
-                placeholder="vin" 
-                [ngModel]="vehicle?.vin"
-                #vin="ngModel"
+                formControlName="vin"
+                placeholder="vin"
+                #vin
                 class="required"
                 required>
               <button type="button" class="btn btn-primary btn-icon input-btn"><i class="material-icons">photo_camera</i></button>
@@ -41,8 +42,7 @@
             type="text" 
             id="make" 
             placeholder="make"
-            name="make"
-            [ngModel]="vehicle?.make"
+            formControlName="make"
             class="required"
             required>
           <div class="break"></div>
@@ -51,21 +51,25 @@
             type="text" 
             id="model" 
             placeholder="model"
-            name="model"
-            [ngModel]="vehicle?.model"
+            formControlName="model"
             class="required"
             required>
           <div class="break"></div>
 
           <select
-            name="year"
+            formControlName="year"
             id="year"
             required>
-              <option value="" disabled selected>select model year</option>
+              <option value="" disabled [selected]="!vehicle">select model year</option>
+              <option 
+                *ngIf="vehicle?.year"
+                [value]="vehicle?.year"
+                selected>
+                {{ vehicle?.year }}
+              </option>
               <option 
                 *ngFor="let year of getYears()"
-                value="year"
-                [selected]="year == vehicle?.year">
+                [value]="year">
                 {{ year }}
               </option>
           </select>
@@ -75,23 +79,45 @@
             type="text" 
             id="img-url" 
             placeholder="image url"
-            name="image"
-            [ngModel]="vehicle?.image"> 
+            formControlName="image"> 
           <div class="break"></div>
 
           <input 
             type="text" 
             id="license-plate" 
             placeholder="license plate"
-            name="licensePlate"
-            [ngModel]="vehicle?.licensePlate">
+            formControlName="licensePlate">
           <div class="break"></div>
 
           <div class="form-txt">Custom Info</div>
           <div class="break"></div>
-          <div class="custom-info-fields"></div>
+          <div 
+            *ngIf="!editMode || (vehicleObservable | async)"
+            class="custom-info-fields"
+            formArrayName="customInfos">
+            <div
+              *ngFor="let customInfoControl of customInfosControl; let i = index;"
+              [formGroupName]="i"
+              class="input-btn-container custom-info-field">
+              <input 
+                type="text" 
+                formControlName="title" 
+                placeholder="title">
+              <input 
+                type="text" 
+                formControlName="info"
+                placeholder="info">
+              <button 
+                (click)="onRemoveCustomInfoField(i)"
+                type="button" 
+                class="btn btn-warn-invert btn-icon input-btn">
+                <i class="material-icons">remove</i>
+              </button>
+            </div>
+          </div>
           <div class="break"></div>
           <button 
+            (click)="onAddCustomInfoField()"
             type="button" 
             class="btn btn-secondary btn-icon input-btn" 
             id="add-custom-info-btn">

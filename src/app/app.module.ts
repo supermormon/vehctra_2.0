@@ -14,6 +14,7 @@ import { VehicleEditComponent } from './dashboard/vehicle-edit/vehicle-edit.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OptionBarComponent } from './dashboard/option-bar/option-bar.component';
 import { LoadingCircleComponent } from './shared/components/loading-circle/loading-circle.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoadingCircleComponent } from './shared/components/loading-circle/loadi
     VehicleItemComponent,
     VehicleEditComponent,
     OptionBarComponent,
-    LoadingCircleComponent
+    LoadingCircleComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@
   // position: relative;
   z-index: 12;
   top: -70px;
-  left: 0;
+  right: 0;
   user-select: none;
   text-align: center;
   display: flex;
@@ -73,6 +73,7 @@
   position: fixed;
   z-index: 11;
   top: 0;
+  // left: 0;
   // opacity: 1;
   background-color: var(--overlay-bg-color);
   width: 100vw;
@@ -82,4 +83,10 @@
 
 .open-kebab-menu {
   top: 0;
+}
+
+@media only screen and (min-width: 500px) {
+  .optionbar {
+    width: calc(100% - 80px);
+  }
 }

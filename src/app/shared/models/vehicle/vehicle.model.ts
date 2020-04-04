@@ -4,13 +4,13 @@ import { CustomInfo } from './customInfo.model';
 
 export class Vehicle {
   constructor(
-    public id: String,
-    public make: String,
-    public model: String,
-    public year: String,
-    public vin: String,
-    public licensePlate: String,
-    public image: String,
+    public id: string,
+    public make: string,
+    public model: string,
+    public year: string,
+    public vin: string,
+    public licensePlate: string,
+    public image: string,
     public customInfos: CustomInfo[],
     public serviceEntries: ServiceEntry[],
     public fuelEntries: FuelEntry[]
