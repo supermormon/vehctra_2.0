@@ -1,0 +1,44 @@
+.setting {
+  display: flex !important;
+  padding: 10px;
+  .desc {
+      width: calc(100% - 76px);
+  }
+
+  .toggle {
+      transition: background-color 0.3s, border-color 0.3s;
+      border: solid 3px var(--primary-bg-color);
+      background-color: var(--primary-bg-color);
+      position: relative;
+      right: 5px;
+      border-radius: 20px;
+      width: 60px;
+      height: 30px;
+      padding: 0;
+      
+      .circle {
+          transition: transform 0.3s;
+          padding: 0;
+          width: 30px;
+          height: 30px;
+          border-radius: 20px;
+          background-color: var(--secondary-bg-color);
+          box-shadow: var(--med-shadow);
+      }
+
+      .circle-on {
+          transform: translateX(30px);
+      }
+  }
+  
+  .toggle-on {
+      border: solid 3px var(--primary-color);
+      background-color: var(--primary-color);
+  }
+
+  button {
+      height: 34px;
+      line-height: 17px;
+      margin: 0;
+  }
+}
